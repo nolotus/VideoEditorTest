@@ -30,7 +30,7 @@ function Clip(props: ItemProps) {
   }
 
   const imageArray = createArrayWithSrc(
-    Math.floor((itemStyle?.width as number) / 45)
+    Math.abs((itemStyle?.width as number) / 45)
   );
   return (
     <div ref={setNodeRef} style={itemStyle} {...listeners} {...attributes}>
@@ -43,7 +43,9 @@ function Clip(props: ItemProps) {
         >
           <div className="flex items-center">
             {imageArray.map((image) => {
-              return <img src={image.src} alt="" />;
+              return (
+                <img src={image.src} alt="" className="pointer-events-none" />
+              );
             })}
           </div>
 
