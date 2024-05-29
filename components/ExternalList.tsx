@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import ExternalItem from "./ExternalClip";
+import ExternalClip from "./ExternalClip";
 
 import type { ExternalItemDefinition } from "./ExternalClip";
 
@@ -13,7 +13,7 @@ function ExternalList(props: ExternaListProps) {
   return (
     <div className="grid grid-cols-2 gap-4">
       {props.items.map((item) => (
-        <ExternalItem item={item} key={item.id} />
+        <ExternalClip item={item} key={item.id} />
       ))}
     </div>
   );

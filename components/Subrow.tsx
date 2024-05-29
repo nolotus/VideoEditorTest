@@ -6,7 +6,7 @@ interface SubrowProps {
 
 function Subrow(props: SubrowProps) {
   return (
-    <div style={{ position: "relative" }} className="h-16">
+    <div style={{ position: "relative" }} className="h-[80px]">
       {props.children}
     </div>
   );

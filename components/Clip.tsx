@@ -20,16 +20,33 @@ function Clip(props: ItemProps) {
         type: ItemType.ListItem,
       },
     });
+  const src = `https://picsum.photos/seed/${props.id}/45/80`;
+  function createArrayWithSrc(n: number) {
+    let arr = [];
+    for (let i = 0; i < n; i++) {
+      arr.push({ src });
+    }
+    return arr;
+  }
 
+  const imageArray = createArrayWithSrc(
+    Math.abs((itemStyle?.width as number) / 45)
+  );
   return (
     <div ref={setNodeRef} style={itemStyle} {...listeners} {...attributes}>
       <div style={itemContentStyle}>
         <div
           className={clsx(
             props.isSelected ? "border-blue-500" : "border-blue-100",
-            "border w-full h-16 overflow-hidden"
+            "border w-full h-[80px] overflow-hidden"
           )}
         >
+          <div className="flex">
+            {imageArray.map((image) => {
+              return <img src={image.src} alt="" />;
+            })}
+          </div>
+
           {props.children}
         </div>
       </div>

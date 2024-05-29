@@ -13,7 +13,7 @@ interface ListItemProps {
   item: ExternalItemDefinition;
 }
 
-function ExternalItem(props: ListItemProps) {
+function ExternalClip(props: ListItemProps) {
   const { getRelevanceFromDragEvent, millisecondsToPixels } =
     useTimelineContext();
 
@@ -31,18 +31,18 @@ function ExternalItem(props: ListItemProps) {
       transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
     }),
   };
-
   return (
     <div
       ref={setNodeRef}
       {...attributes}
       {...listeners}
       style={style}
-      className="w-18 h-32 border z-10"
+      className="w-[100px] h-[160px] border z-10"
     >
+      <img src={`https://picsum.photos/seed/${props.item.id}/100/160`} />
       {props.item.id}
     </div>
   );
 }
 
-export default ExternalItem;
+export default ExternalClip;

@@ -18,7 +18,7 @@ function Row(props: RowProps) {
   return (
     <div
       style={{ ...rowWrapperStyle, minHeight: 50 }}
-      className="hover:bg-gray-500 bg-gray-700 border-none h-18"
+      className="hover:bg-gray-500 bg-gray-700 border-none h-[82px]"
     >
       <div ref={setSidebarRef} style={rowSidebarStyle}>
         {props.sidebar}
