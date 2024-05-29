@@ -1,5 +1,8 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
+# please visit https://video-editor-test.vercel.app/ 
+- [x] Implement the UI of a timeline view in a video Editor
+- [x] Be able to drag the handle of each clip to shorten/extend the clip, to change itʼs start/end
+- [x] Be able to drag and drop the clip anywhere in the timeline Create track if drag & drop in the middle of two tracks Even from outside of the timeline view)
 ## Getting Started
 
 First, run the development server:
