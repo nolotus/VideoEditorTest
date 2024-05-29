@@ -13,11 +13,12 @@ interface TimelineProps {
   rows: RowDefinition[];
   items: ItemDefinition[];
   setRows: Dispatch<SetStateAction<RowDefinition[]>>;
+  selectId: string;
 }
 
 function Timeline(props: TimelineProps) {
   const { setTimelineRef, style, timeframe } = useTimelineContext();
-  const { rows, setRows } = props;
+  const { rows, setRows, selectId } = props;
   const groupedSubrows = useMemo(
     () => groupItemsToSubrows(props.items, timeframe),
     [props.items, timeframe]
@@ -25,13 +26,11 @@ function Timeline(props: TimelineProps) {
 
   useEffect(() => {
     if (!rows || rows.length === 0) return;
-    console.log("groupedSubrows", groupedSubrows);
 
     const firstRowId = rows[0].id;
 
     const lastRowId = rows[rows.length - 1].id;
 
-    // 检查第一行和最后一行是否在 groupedSubrows 中有对应的值
     if (groupedSubrows[firstRowId]) {
       let newRows = [...rows];
       let newRow = generateRows(1);
@@ -58,7 +57,12 @@ function Timeline(props: TimelineProps) {
           {groupedSubrows[row.id]?.map((subrow, index) => (
             <Subrow key={`${row.id}-${index}`}>
               {subrow.map((item) => (
-                <Clip id={item.id} key={item.id} relevance={item.relevance}>
+                <Clip
+                  id={item.id}
+                  key={item.id}
+                  relevance={item.relevance}
+                  isSelected={item.id === selectId}
+                >
                   {`Clip ${item.id}`}
                 </Clip>
               ))}

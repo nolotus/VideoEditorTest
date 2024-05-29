@@ -2,11 +2,13 @@ import React from "react";
 import type { Relevance } from "dnd-timeline";
 import { useItem } from "dnd-timeline";
 import { ItemType } from "@/utils";
+import clsx from "clsx";
 
 interface ItemProps {
   id: string;
   relevance: Relevance;
   children: React.ReactNode;
+  isSelected: Boolean;
 }
 
 function Clip(props: ItemProps) {
@@ -22,7 +24,12 @@ function Clip(props: ItemProps) {
   return (
     <div ref={setNodeRef} style={itemStyle} {...listeners} {...attributes}>
       <div style={itemContentStyle}>
-        <div className="border w-full h-16 overflow-hidden">
+        <div
+          className={clsx(
+            props.isSelected ? "border-blue-500" : "border-blue-100",
+            "border w-full h-16 overflow-hidden"
+          )}
+        >
           {props.children}
         </div>
       </div>

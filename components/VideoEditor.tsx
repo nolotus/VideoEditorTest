@@ -1,6 +1,6 @@
 "use client";
 import "./index.css";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { endOfDay, startOfDay } from "date-fns";
 import type { DragEndEvent, ResizeEndEvent, Timeframe } from "dnd-timeline";
 import { TimelineContext } from "dnd-timeline";
@@ -13,6 +13,7 @@ import {
   generateItems,
   generateRows,
 } from "@/utils";
+import { DragOverEvent } from "@dnd-kit/core";
 
 const DEFAULT_TIMEFRAME: Timeframe = {
   start: startOfDay(new Date()),
@@ -20,6 +21,8 @@ const DEFAULT_TIMEFRAME: Timeframe = {
 };
 
 function VideoEditor() {
+  const [selectId, setSelectId] = useState("");
+
   const [timeframe, setTimeframe] = useState(DEFAULT_TIMEFRAME);
 
   const [rows, setRows] = useState(generateRows(2));
@@ -91,8 +94,16 @@ function VideoEditor() {
     [setItems]
   );
 
+  const onDragOver = useCallback(
+    (event: DragOverEvent) => {
+      const selectId = event.active.id as string;
+      setSelectId(selectId);
+    },
+    [setItems, setSelectId]
+  );
   return (
     <TimelineContext
+      onDragOver={onDragOver}
       onDragEnd={onDragEnd}
       onResizeEnd={onResizeEnd}
       onTimeframeChanged={setTimeframe}
@@ -103,7 +114,12 @@ function VideoEditor() {
           <ExternalList items={externalItems} />
         </div>
         <div className="w-full self-end">
-          <Timeline items={items} rows={rows} setRows={setRows} />
+          <Timeline
+            items={items}
+            rows={rows}
+            setRows={setRows}
+            selectId={selectId}
+          />
         </div>
       </div>
     </TimelineContext>
