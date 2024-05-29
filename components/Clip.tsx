@@ -30,7 +30,7 @@ function Clip(props: ItemProps) {
   }
 
   const imageArray = createArrayWithSrc(
-    Math.abs((itemStyle?.width as number) / 45)
+    Math.floor((itemStyle?.width as number) / 45)
   );
   return (
     <div ref={setNodeRef} style={itemStyle} {...listeners} {...attributes}>
@@ -38,10 +38,10 @@ function Clip(props: ItemProps) {
         <div
           className={clsx(
             props.isSelected ? "border-blue-500" : "border-blue-100",
-            "border w-full h-[80px] overflow-hidden"
+            "border w-full h-[80px] overflow-hidden "
           )}
         >
-          <div className="flex">
+          <div className="flex items-center">
             {imageArray.map((image) => {
               return <img src={image.src} alt="" />;
             })}
