@@ -37,8 +37,8 @@ function Clip(props: ItemProps) {
       <div style={itemContentStyle}>
         <div
           className={clsx(
-            props.isSelected ? "border-blue-500" : "border-blue-100",
-            "border w-full h-[80px] overflow-hidden "
+            props.isSelected ? "border-blue-600 border-2" : "border-blue-100",
+            "border w-full h-[80px] overflow-hidden rounded-md"
           )}
         >
           <div className="flex items-center">

@@ -50,7 +50,7 @@ function Timeline(props: TimelineProps) {
     <div
       ref={setTimelineRef}
       style={style}
-      className="bg-black gap-2 w-full h-full"
+      className="bg-black gap-2 w-full h-full border border-gray-500"
     >
       {props.rows.map((row) => (
         <Row id={row.id} key={row.id} sidebar={<Sidebar row={row} />}>

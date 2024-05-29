@@ -11,7 +11,7 @@ interface ExternaListProps {
 
 function ExternalList(props: ExternaListProps) {
   return (
-    <div className="grid grid-cols-2 gap-8">
+    <div className="grid xl:grid-cols-2 grid-cols-1 gap-10">
       {props.items.map((item) => (
         <ExternalClip item={item} key={item.id} />
       ))}

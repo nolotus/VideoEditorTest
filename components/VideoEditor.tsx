@@ -109,8 +109,8 @@ function VideoEditor() {
       onTimeframeChanged={setTimeframe}
       timeframe={timeframe}
     >
-      <div className="flex w-full h-screen justify-between  bg-slate-900 text-white gap-10 p-6">
-        <div className="w-1/5">
+      <div className="flex w-full h-screen justify-between  bg-black text-white  p-6">
+        <div className="w-1/5 border-r border-gray-500">
           <ExternalList items={externalItems} />
         </div>
         <div className="w-full self-end">
