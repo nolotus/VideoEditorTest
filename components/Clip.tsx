@@ -20,7 +20,7 @@ function Clip(props: ItemProps) {
         type: ItemType.ListItem,
       },
     });
-  const src = `https://picsum.photos/seed/${props.id}/45/80`;
+  const src = `https://picsum.photos/seed/${props.id}/90/160`;
   function createArrayWithSrc(n: number) {
     let arr = [];
     for (let i = 0; i < n; i++) {
@@ -44,12 +44,16 @@ function Clip(props: ItemProps) {
           <div className="flex items-center">
             {imageArray.map((image) => {
               return (
-                <img src={image.src} alt="" className="pointer-events-none" />
+                <img
+                  src={image.src}
+                  width={"100%"}
+                  height={"80px"}
+                  alt={props.children as string}
+                  className="pointer-events-none"
+                />
               );
             })}
           </div>
-
-          {props.children}
         </div>
       </div>
     </div>

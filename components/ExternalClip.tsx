@@ -37,9 +37,9 @@ function ExternalClip(props: ListItemProps) {
       {...attributes}
       {...listeners}
       style={style}
-      className="w-[100px] h-[160px] border z-10"
+      className="w-[90px] h-[160px] border z-10"
     >
-      <img src={`https://picsum.photos/seed/${props.item.id}/100/160`} />
+      <img src={`https://picsum.photos/seed/${props.item.id}/90/160`} />
       {props.item.id}
     </div>
   );
